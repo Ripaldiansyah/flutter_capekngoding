@@ -1,16 +1,17 @@
 class Chapter1 {
   bool? exercise1() {
     //Ubah tipe data variable dibawah ini menjadi String
-    int price = 100;
+    String price = "100";
     return price is String;
   }
 
   bool? exercise2() {
     double? price;
-    String text = "100.24";
+    double text = 100.24;
     //Ubahlah variable text di atas menjadi double,
     //dan isilah varibel price dengan hasil konversinya
     //di bagian bawah
+    price = text;
     return price == 100.24;
   }
 
@@ -22,7 +23,7 @@ class Chapter1 {
     //Gunakan Regex seperti ini: .replaceAll(RegExp(r'[^\d.]'), '')
 
     String text = "300.24a";
-    // price = double.tryParse(text) ?? 0;
+    price = double.tryParse(text) ?? 0;
     return price == 300.24;
   }
 
