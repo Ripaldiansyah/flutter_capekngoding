@@ -602,6 +602,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengambil 11 karakter terakhir dari variable text.
     String? output = "";
+    output = text.substring(text.length - 11);
     return output == " is awesome";
   }
 
@@ -609,6 +610,7 @@ class Chapter1 {
     String text = "  Dart is awesome  ";
     // Implementasikan kode untuk menghapus spasi di awal dan akhir dari variable text.
     String? output = "";
+    output = text.trim();
     return output == "Dart is awesome";
   }
 
@@ -616,6 +618,7 @@ class Chapter1 {
     List<String> names = ["John", "Jane", "Jim", "Jack", "Jill"];
     // Implementasikan kode untuk menggabungkan semua nama pada List names menjadi satu string dengan koma di antara nama-nama tersebut, misalnya "John, Jane, Jim, Jack, Jill".
     String? output = "";
+    output = names.join(", ");
     return output == "John, Jane, Jim, Jack, Jill";
   }
 
@@ -623,6 +626,7 @@ class Chapter1 {
     String text = "Dart";
     // Implementasikan kode untuk membalikkan urutan karakter pada variable text, sehingga menjadi "traD".
     String? output = "";
+    output = text.split("").reversed.join();
     return output == "traD";
   }
 
@@ -630,6 +634,7 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk memeriksa apakah semua angka pada List numbers adalah angka positif (lebih besar dari 0).
     bool? output = false;
+    output = numbers.every((element) => element > 0);
     return output;
   }
 
@@ -637,6 +642,10 @@ class Chapter1 {
     List<int> numbers = [33, 22, 13, 14, 15];
     // Implementasikan kode untuk menghitung jumlah angka pada List numbers.
     int? output = -1;
+    for (int number in numbers) {
+      output = number.bitLength;
+      print(output);
+    }
     return output == 5;
   }
 

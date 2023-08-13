@@ -9,10 +9,12 @@ void main() {
 }
 
 bool exercise27() {
-  List<String> fruits = ["apple", "banana", "cherry"];
+  List<String> fruits = ["Alice", "Bob", "Charlie", "David"];
   // Implementasikan kode untuk menggabungkan semua elemen pada List fruits menjadi satu string dengan spasi di antara buah-buahnya, misalnya "apple banana cherry".
-  String? output = "";
-  output = fruits.join(" ");
-  print(output);
+  String output = "";
+  for (String fruit in fruits) {
+    output += fruit + ", ";
+    print(output);
+  }
   return output == "apple banana cherry";
 }
