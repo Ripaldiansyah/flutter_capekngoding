@@ -23,7 +23,10 @@ class Chapter1 {
     //Gunakan Regex seperti ini: .replaceAll(RegExp(r'[^\d.]'), '')
 
     String text = "300.24a";
+    text = text.replaceAll(RegExp(r'[^\d.]'), '');
     price = double.tryParse(text) ?? 0;
+
+    print(price);
     return price == 300.24;
   }
 
@@ -31,6 +34,13 @@ class Chapter1 {
     int input = 12;
     // Tuliskan kode untuk memverifikasi apakah input adalah bilangan ganjil
     bool? output;
+
+    if (input % 2 == 1) {
+      output = true;
+    } else {
+      output = false;
+    }
+
     return output == false;
   }
 
@@ -41,9 +51,7 @@ class Chapter1 {
     //Kode dibawah akan error jika di jalankan,
     //Perbaiki dengan meng-gunakan .tryParse("300aa")??0
     //Sehingga ketika parameter-nya tidak valid, nilainya menjadi 0
-    /*
-          total = double.parse("300aa");
-          */
+    total = double.tryParse("300aa") ?? 0;
     return total != null;
   }
 
@@ -55,21 +63,19 @@ class Chapter1 {
     //Perbaiki dengan meng-gunakan .tryParse("39ads")??0
     //Sehingga ketika parameter-nya tidak valid, nilainya menjadi 0
 
-    /*
-    age = int.parse("39ads");
-    */
+    age = int.tryParse("39ads") ?? 0;
 
     return age != null;
   }
 
   bool? exercise7() {
     int price = 0;
-    String value = "5000";
+    int value = 5000;
 
     // Uncomment kode dibawah, dan perbaiki agar tidak error
-    /*
-    value = price;
-    */
+
+    price = value;
+
     return price == 5000;
   }
 
@@ -84,6 +90,11 @@ class Chapter1 {
 
     String text = "hello 'Deny', apa kabar?";
     String? name;
+
+    int startIndex = text.indexOf("'") + 1;
+    int endIndex = text.lastIndexOf("'");
+    name = text.substring(startIndex, endIndex);
+
     //Berdasarkan referensi di atas,
     //Ambil text diantara ' dan ' pada variable text
     return name == "Deny";
@@ -98,6 +109,14 @@ class Chapter1 {
           [TIPS] Gunakan for untuk mendapatkan total.
           Gunakan numbers.length untuk mendapatkan panjang List
           */
+
+    int numberLength = numbers.length;
+
+    for (int i = 0; i < numberLength; i++) {
+      total += numbers[i];
+    }
+
+    average = total / numberLength;
     return average.toStringAsFixed(2) == "57.43";
   }
 
@@ -110,22 +129,29 @@ class Chapter1 {
           */
     int minValue = 0;
     int maxValue = 0;
+    numbers.sort();
+    minValue = numbers.first;
+    maxValue = numbers.last;
 
     return minValue == 23 && maxValue == 109;
   }
 
   bool exercise11() {
     int input = 10;
+    input += 5;
     // Tuliskan kode untuk menambahkan 5 pada input
     int? output;
+    output = input;
 
     return output == 15;
   }
 
   bool exercise12() {
     int input = 10;
+    input -= 5;
     // Tuliskan kode untuk mengurangi 5 pada input
     int? output;
+    output = input;
 
     return output == 5;
   }
@@ -135,6 +161,7 @@ class Chapter1 {
     int input2 = 20;
     // Tuliskan kode untuk menjumlahkan input1 dan input2
     int? output;
+    output = input1 + input2;
 
     return output == 30;
   }
@@ -144,6 +171,7 @@ class Chapter1 {
     int input2 = 20;
     // Tuliskan kode untuk mengurangi input2 dengan input1
     int? output;
+    output = input2 - input1;
 
     return output == 10;
   }
@@ -153,6 +181,7 @@ class Chapter1 {
     int input2 = 20;
     // Tuliskan kode untuk membagi input2 dengan input1
     double? output;
+    output = input2 / input1;
 
     return output == 2.0;
   }
@@ -162,6 +191,7 @@ class Chapter1 {
     int input2 = 20;
     // Tuliskan kode untuk mengalikan input1 dan input2
     int? output;
+    output = input1 * input2;
 
     return output == 200;
   }
@@ -171,14 +201,17 @@ class Chapter1 {
     int input2 = 20;
     // Tuliskan kode untuk menghitung sisa bagi input2 dengan input1
     int? output;
+    output = input2 % input1;
 
     return output == 0;
   }
 
   bool exercise18() {
     String input = "Hello";
+    input += " World!";
     // Tuliskan kode untuk menambahkan " World!" pada input
     String? output = "";
+    output = input;
 
     return output == "Hello World!";
   }
@@ -187,6 +220,8 @@ class Chapter1 {
     String input = "Hello World!";
     // Tuliskan kode untuk mengambil kata pertama dari input
     String? output = "";
+    output = input.substring(0, 5);
+    print(output);
 
     return output == "Hello";
   }
@@ -195,6 +230,7 @@ class Chapter1 {
     String input = "Hello World!";
     // Tuliskan kode untuk mengambil kata kedua dari input
     String? output = "";
+    output = input.substring(6, 12);
 
     return output == "World!";
   }
@@ -203,6 +239,7 @@ class Chapter1 {
     int input = 12345;
     // Tuliskan kode untuk memverifikasi apakah input adalah bilangan genap
     bool? output;
+    output = input.isEven;
 
     return output == false;
   }
@@ -211,6 +248,7 @@ class Chapter1 {
     int input = 12345;
     // Tuliskan kode untuk memverifikasi apakah input adalah bilangan ganjil
     bool? output;
+    output = input.isOdd;
 
     return output == true;
   }
@@ -219,6 +257,11 @@ class Chapter1 {
     String input = "Dart";
     // Tuliskan kode untuk memverifikasi apakah input memiliki panjang lebih dari 3 karakter
     bool? output;
+    if (input.length > 3) {
+      output = true;
+    } else {
+      output = false;
+    }
 
     return output == true;
   }
@@ -227,6 +270,11 @@ class Chapter1 {
     String input = "Dart";
     // Tuliskan kode untuk memverifikasi apakah input memiliki panjang sama dengan 3 karakter
     bool? output;
+    if (input.length == 3) {
+      output = true;
+    } else {
+      output = false;
+    }
 
     return output == false;
   }
@@ -235,7 +283,7 @@ class Chapter1 {
     String input = "Dart";
     // Tuliskan kode untuk memverifikasi apakah input memiliki huruf pertama 'D'
     bool? output;
-
+    output = input.startsWith("D");
     return output == true;
   }
 
@@ -243,7 +291,7 @@ class Chapter1 {
     String input = "Dart";
     // Tuliskan kode untuk memverifikasi apakah input memiliki huruf terakhir 't'
     bool? output;
-
+    output = input.endsWith("t");
     return output == true;
   }
 
@@ -251,7 +299,7 @@ class Chapter1 {
     int input = 12345;
     // Tuliskan kode untuk memverifikasi apakah input memiliki 5 digit
     bool? output;
-
+    output = input.toString().length == 5;
     return output == true;
   }
 
@@ -259,6 +307,7 @@ class Chapter1 {
     int input = 12345;
     // Tuliskan kode untuk memverifikasi apakah input memiliki 4 digit
     bool? output;
+    output = input.toString().length == 4;
 
     return output == false;
   }
@@ -267,6 +316,7 @@ class Chapter1 {
     double input = 123.45;
     // Tuliskan kode untuk memverifikasi apakah input memiliki 2 digit setelah koma
     bool? output;
+    output = (input * 100) % 1 == 0;
 
     return output == true;
   }
@@ -275,6 +325,16 @@ class Chapter1 {
     double input = 123.45;
     // Tuliskan kode untuk memverifikasi apakah input memiliki 3 digit setelah koma
     bool? output;
+    String inputString = input.toString(); //ubah dlu ke string
+    int decimalIndex =
+        inputString.indexOf("."); //hasilnya 3 karena setelah . ada 3 angka 123
+    int digitsAfterIndex = inputString.length -
+        decimalIndex -
+        1; //panjang string input=5 (-) decimalIndex(3) (-) lalu dikurang 1 lagi agar pas 123.
+    digitsAfterIndex == 3
+        ? output = true
+        : output =
+            false; //kalau digitsAfterIndexnya = 3 berarti benar belakang koma ada 3
 
     return output == false;
   }
@@ -283,7 +343,8 @@ class Chapter1 {
     String input = "Hello World";
     // Tuliskan kode untuk memverifikasi apakah input adalah palindrome
     bool? output;
-
+    String reversedInput = input.split('').reversed.join('');
+    output = input == reversedInput;
     return output == false;
   }
 
@@ -291,6 +352,7 @@ class Chapter1 {
     String input = "Dart is Awesome";
     // Tuliskan kode untuk mengubah input menjadi huruf kecil semua dan memisahkan kata dengan spasi menjadi underscore
     String? output = "";
+    output = input.toLowerCase().replaceAll(" ", "_");
 
     return output == "dart_is_awesome";
   }
@@ -299,7 +361,7 @@ class Chapter1 {
     String input = "1234";
     // Tuliskan kode untuk memverifikasi apakah input adalah angka
     bool? output;
-
+    output = int.tryParse(input) != null;
     return output == true;
   }
 
@@ -308,6 +370,7 @@ class Chapter1 {
         "Dart is a client-optimized programming language for fast apps on multiple platforms.";
     // Tuliskan kode untuk membatasi jumlah karakter pada input menjadi 50 karakter
     String? output = "";
+    output = input.substring(0, 50);
 
     return output.length == 50;
   }
@@ -317,6 +380,7 @@ class Chapter1 {
         "Dart is a client-optimized programming language for fast apps on multiple platforms.";
     // Tuliskan kode untuk memverifikasi apakah kata "Dart" muncul pada input
     bool? output = false;
+    output = input.contains("Dart");
     return output == true;
   }
 
@@ -324,6 +388,7 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengecek apakah semua angka pada List numbers adalah angka genap.
     bool? output = true;
+    output = numbers.every((numbers) => numbers % 2 == 0);
     return output == false;
   }
 
@@ -331,6 +396,7 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengecek apakah ada angka 3 pada List numbers.
     bool? output = false;
+    output = numbers.contains(3);
     return output;
   }
 
@@ -338,6 +404,8 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menggabungkan semua angka pada List numbers menjadi satu string tanpa spasi, misalnya "12345".
     String? output = "";
+    output = numbers
+        .join(''); //'' sebagai pemisah, misal '&' maka hasilnya 1&2&3&4&5
     return output == "12345";
   }
 
@@ -347,6 +415,7 @@ class Chapter1 {
     // List numbers menjadi satu string dengan spasi di antara angka,
     // misalnya "1 2 3 4 5".
     String? output = "";
+    output = numbers.join(" ");
     return output == "1 2 3 4 5";
   }
 
@@ -357,7 +426,7 @@ class Chapter1 {
       "city": "New York",
     };
     // Implementasikan kode untuk mendapatkan daftar keys pada Map person.
-    List<String> output = [];
+    List<String> output = person.keys.toList();
     return output.contains("name") &&
         output.contains("age") &&
         output.contains("city");
@@ -370,7 +439,7 @@ class Chapter1 {
       "city": "New York",
     };
     // Implementasikan kode untuk mendapatkan daftar values pada Map person.
-    List<dynamic> output = [];
+    List<dynamic> output = person.values.toList();
     return output.contains("John") &&
         output.contains(30) &&
         output.contains("New York");
@@ -380,6 +449,7 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menghitung jumlah angka pada List numbers.
     int? output = -1;
+    output = numbers.length;
     return output == 5;
   }
 
@@ -387,6 +457,12 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menghitung jumlah total dari semua angka pada List numbers.
     int? output = -1;
+
+    int sum = 0;
+    for (int number in numbers) {
+      sum += number;
+    }
+    output = sum;
     return output == 15;
   }
 
@@ -394,13 +470,20 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menghitung jumlah total dari semua angka pada List numbers, tapi kali ini tambahkan nilai awal 10.
     int? output = -1;
+
+    int sum = 10;
+    for (int number in numbers) {
+      sum += number;
+    }
+    output = sum;
     return output == 25;
   }
 
   bool? exercise45() {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengambil setiap angka pada List numbers dan kalikan dengan 2, hasilnya disimpan dalam List baru.
-    List<int> output = [];
+    // int multiplicationNumber = numbers.toList();
+    List<int> output = numbers.map((number) => number * 2).toList();
     return output.contains(2) && output.contains(10) && output.length == 5;
   }
 
@@ -408,6 +491,11 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengambil setiap angka ganjil pada List numbers, hasilnya disimpan dalam List baru.
     List<int> output = [];
+    for (int number in numbers) {
+      if (number % 2 != 0) {
+        output.add(number);
+      }
+    }
     return output.contains(1) &&
         output.contains(3) &&
         output.contains(5) &&
@@ -417,11 +505,13 @@ class Chapter1 {
   bool? exercise47() {
     List<String> fruits = ["banana", "cherry", "apple"];
     // Implementasikan kode untuk mengurutkan List fruits secara ascending.
+    fruits.sort();
     return fruits[0] == "apple" && fruits[2] == "cherry";
   }
 
   bool? exercise48() {
     List<String> fruits = ["apple", "banana", "cherry"];
+    fruits.sort((a, b) => b.compareTo(a));
     // Implementasikan kode untuk mengurutkan List fruits secara descending.
     return fruits[0] == "cherry" && fruits[2] == "apple";
   }
@@ -430,6 +520,7 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk memeriksa apakah semua angka pada List numbers adalah angka positif (lebih besar dari 0).
     bool? output = false;
+    output = numbers.every((number) => number > 0);
     return output;
   }
 
@@ -437,6 +528,7 @@ class Chapter1 {
     List<int> numbers = [-1, -2, 3, 4, 5];
     // Implementasikan kode untuk memeriksa apakah ada angka negatif pada List numbers.
     bool? output = false;
+    output = numbers.any((number) => number < 0);
     return output;
   }
 
@@ -444,6 +536,7 @@ class Chapter1 {
     List<String> fruits = ["apple", "banana", "cherry"];
     // Implementasikan kode untuk memeriksa apakah ada buah dengan nama "apple" pada List fruits.
     bool? output = false;
+    output = fruits.any((element) => element == "apple");
     return output;
   }
 
@@ -451,6 +544,7 @@ class Chapter1 {
     List<String> fruits = ["apple", "banana", "cherry"];
     // Implementasikan kode untuk menggabungkan semua elemen pada List fruits menjadi satu string dengan spasi di antara buah-buahnya, misalnya "apple banana cherry".
     String? output = "";
+    output = fruits.join(" ");
     return output == "apple banana cherry";
   }
 
@@ -458,6 +552,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengubah semua karakter pada variable text menjadi huruf kecil.
     String? output = "";
+    output = text.toLowerCase();
     return output == "dart is awesome";
   }
 
@@ -465,6 +560,7 @@ class Chapter1 {
     String text = "dart is awesome";
     // Implementasikan kode untuk mengubah semua karakter pada variable text menjadi huruf besar.
     String? output = "";
+    output = text.toUpperCase();
     return output == "DART IS AWESOME";
   }
 
@@ -472,6 +568,8 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengubah karakter pertama pada variable text menjadi huruf besar.
     String? output = "";
+    output =
+        text.substring(0, 1).toUpperCase() + text.substring(1).toLowerCase();
     return output == "Dart is awesome";
   }
 
@@ -479,6 +577,8 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengubah karakter terakhir pada variable text menjadi huruf besar.
     String? output = "";
+    output = text.substring(0, text.length - 1) +
+        text.substring(text.length - 1).toUpperCase();
     return output == "Dart is awesomE";
   }
 
@@ -486,6 +586,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengganti kata "awesome" pada variable text dengan kata "fantastic".
     String? output = "";
+    output = text.replaceAll("awesome", "fantastic");
     return output == "Dart is fantastic";
   }
 
@@ -493,6 +594,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengambil 10 karakter pertama dari variable text.
     String? output = "";
+    output = text.substring(0, 10);
     return output == "Dart is aw";
   }
 
