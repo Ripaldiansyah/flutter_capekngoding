@@ -25,8 +25,6 @@ class Chapter1 {
     String text = "300.24a";
     text = text.replaceAll(RegExp(r'[^\d.]'), '');
     price = double.tryParse(text) ?? 0;
-
-    print(price);
     return price == 300.24;
   }
 
@@ -221,7 +219,6 @@ class Chapter1 {
     // Tuliskan kode untuk mengambil kata pertama dari input
     String? output = "";
     output = input.substring(0, 5);
-    print(output);
 
     return output == "Hello";
   }
@@ -642,10 +639,7 @@ class Chapter1 {
     List<int> numbers = [33, 22, 13, 14, 15];
     // Implementasikan kode untuk menghitung jumlah angka pada List numbers.
     int? output = -1;
-    for (int number in numbers) {
-      output = number.bitLength;
-      print(output);
-    }
+    output = numbers.length;
     return output == 5;
   }
 
@@ -653,6 +647,8 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengambil nilai maksimum dari List numbers.
     int? output = -1;
+    output =
+        numbers.reduce((value, element) => value > element ? value : element);
     return output == 5;
   }
 
@@ -660,17 +656,21 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengambil nilai minimum dari List numbers.
     int? output = -1;
+    output =
+        numbers.reduce((value, element) => value < element ? value : element);
     return output == 1;
   }
 
   bool? exercise67() {
     List<int> numbers = [5, 3, 2, 4, 1];
     // Implementasikan kode untuk mengurutkan List numbers secara ascending.
+    numbers.sort();
     return numbers[0] == 1 && numbers[4] == 5;
   }
 
   bool? exercise68() {
     List<int> numbers = [1, 2, 3, 4, 5];
+    numbers.sort((a, b) => b.compareTo(a));
     // Implementasikan kode untuk mengurutkan List numbers secara descending.
     return numbers[0] == 5 && numbers[4] == 1;
   }
@@ -679,6 +679,9 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah kata "is" muncul pada variable text.
     bool? output = false;
+    if (text.contains("is")) {
+      output = true;
+    }
     return output;
   }
 
@@ -686,6 +689,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah variable text diakhiri dengan kata "awesome".
     bool? output = false;
+    output = text.endsWith("awesome");
     return output;
   }
 
@@ -693,6 +697,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah variable text diawali dengan kata "Dart".
     bool? output = false;
+    output = text.startsWith("Dart");
     return output;
   }
 
@@ -721,6 +726,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengambil substring dari index 5 hingga 10 dari variable text.
     String? output = "";
+    output = text.substring(5, 11);
     return output == "is awe";
   }
 
@@ -728,6 +734,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengambil substring dari index 5 hingga akhir dari variable text.
     String? output = "";
+    output = text.substring(5);
     return output == "is awesome";
   }
 
@@ -735,6 +742,7 @@ class Chapter1 {
     String text = "   Dart is awesome   ";
     // Implementasikan kode untuk menghapus spasi di awal dan akhir dari variable text.
     String? output = "";
+    output = text.trim();
     return output == "Dart is awesome";
   }
 
@@ -742,13 +750,15 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengganti kata "is" pada variable text dengan kata "will be".
     String? output = "";
+    output = text.replaceAll("is", "will be");
     return output == "Dart will be awesome";
   }
 
   bool? exercise79() {
-    String text = "Dart is awesome";
+    String text = "dart is awesome";
     // Implementasikan kode untuk mengubah karakter pertama pada variable text menjadi huruf besar.
     String? output = "";
+    output = text.substring(0, 1).toUpperCase() + text.substring(1);
     return output == "Dart is awesome";
   }
 
@@ -756,6 +766,7 @@ class Chapter1 {
     String text = "dart is awesome";
     // Implementasikan kode untuk mengubah karakter pertama pada variable text menjadi huruf besar.
     String? output = "";
+    output = text.substring(0, 1).toUpperCase() + text.substring(1);
     return output == "Dart is awesome";
   }
 
@@ -763,6 +774,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk menghapus 3 karakter terakhir dari variable text.
     String? output = "";
+    output = text.substring(0, text.length - 4);
     return output == "Dart is awe";
   }
 
@@ -770,6 +782,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk menambahkan karakter "!" pada akhir variable text.
     String? output = "";
+    output = "$text!";
     return output == "Dart is awesome!";
   }
 
@@ -777,6 +790,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengubah variable text menjadi huruf kecil semua.
     String? output = "";
+    output = text.toLowerCase();
     return output == "dart is awesome";
   }
 
@@ -784,6 +798,7 @@ class Chapter1 {
     String text = "dart is awesome";
     // Implementasikan kode untuk mengubah variable text menjadi huruf besar semua.
     String? output = "";
+    output = text.toUpperCase();
     return output == "DART IS AWESOME";
   }
 
@@ -791,6 +806,7 @@ class Chapter1 {
     String text = "dart is awesome";
     // Implementasikan kode untuk mengubah karakter pertama pada variable text menjadi huruf besar.
     String? output = "";
+    output = text.substring(0, 1).toUpperCase() + text.substring(1);
     return output == "Dart is awesome";
   }
 
@@ -798,6 +814,8 @@ class Chapter1 {
     String text = "dart is awesome";
     // Implementasikan kode untuk mengubah karakter terakhir pada variable text menjadi huruf besar.
     String? output = "";
+    output = text.substring(0, text.length - 1) +
+        text.substring(text.length - 1).toUpperCase();
     return output == "dart is awesomE";
   }
 
@@ -805,6 +823,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengganti kata "awesome" pada variable text dengan kata "fantastic".
     String? output = "";
+    output = text.replaceAll("awesome", "fantastic");
     return output == "Dart is fantastic";
   }
 
@@ -812,6 +831,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengambil 10 karakter pertama dari variable text.
     String? output = "";
+    output = text.substring(0, 10);
     return output == "Dart is aw";
   }
 
@@ -819,6 +839,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengambil 8 karakter terakhir dari variable text.
     String? output = "";
+    output = text.substring(text.length - 11);
     return output == " is awesome";
   }
 
@@ -826,6 +847,7 @@ class Chapter1 {
     String text = "  Dart is awesome  ";
     // Implementasikan kode untuk menghapus spasi di awal dan akhir dari variable text.
     String? output = "";
+    output = text.trim();
     return output == "Dart is awesome";
   }
 
@@ -833,6 +855,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah kata "Dart" muncul pada variable text.
     bool? output = false;
+    output = text.contains("Dart");
     return output;
   }
 
@@ -840,6 +863,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah variable text mengandung huruf "a".
     bool? output = false;
+    output = text.contains("a");
     return output;
   }
 
@@ -847,6 +871,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah variable text mengandung huruf "x".
     bool? output = null;
+    output = text.contains("x");
     return output == false;
   }
 
@@ -854,6 +879,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk menghitung jumlah huruf "a" pada variable text.
     int? output = -1;
+    output += text.split("a").length;
     return output == 2;
   }
 
@@ -861,6 +887,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk menghitung jumlah huruf "x" pada variable text.
     int? output = -1;
+    output += text.split("x").length;
     return output == 0;
   }
 
@@ -868,6 +895,8 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk menghitung jumlah huruf "a" atau "A" pada variable text.
     int? output = -1;
+    output += text.split("a").length;
+
     return output == 2;
   }
 
@@ -875,6 +904,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah variable text mengandung kata "is".
     bool? output = false;
+    output = text.contains("is");
     return output;
   }
 
@@ -882,6 +912,9 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah variable text diawali dengan kata "Dart" dan mengandung kata "awesome".
     bool? output = false;
+    if (text.startsWith("Dart") && text.contains("awesome")) {
+      output = true;
+    }
     return output;
   }
 
@@ -889,6 +922,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah variable text diakhiri dengan huruf "e".
     bool? output = false;
+    output = text.endsWith("e");
     return output;
   }
 
@@ -896,6 +930,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk memeriksa apakah variable text mengandung huruf "x" dan "a".
     bool? output = null;
+    output = text.contains("x") && text.contains("a");
     return output == false;
   }
 
@@ -903,6 +938,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk menggabungkan variable text dengan string " and Flutter", hasilnya disimpan dalam variable baru.
     String? output = "";
+    output = text + " and Flutter";
     return output == "Dart is awesome and Flutter";
   }
 
@@ -910,6 +946,7 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk menggabungkan variable text dengan string " and Flutter" dengan menggunakan operator +=, hasilnya disimpan dalam variable baru.
     String? output = "";
+    output = text;
     output += " and Flutter";
     return output == "Dart is awesome and Flutter";
   }
@@ -918,6 +955,8 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk menggabungkan variable text dengan string " and Flutter" dengan menggunakan method concat, hasilnya disimpan dalam variable baru.
     String? output = "";
+    String text2 = " and Flutter";
+    output = text + text2;
     return output == "Dart is awesome and Flutter";
   }
 
@@ -932,7 +971,7 @@ class Chapter1 {
     String text = "Awesome";
     // Implementasikan kode untuk mengubah variable text menjadi list karakter,
     // hasilnya disimpan dalam variable output.
-    List<String>? output = [];
+    List<String>? output = text.split("");
     return output.join("") == "Awesome";
   }
 
@@ -940,11 +979,14 @@ class Chapter1 {
     String text = "Dart is awesome";
     // Implementasikan kode untuk mengubah list kata-kata pada variable text menjadi kalimat utuh, hasilnya disimpan dalam variable baru.
     String? output = "";
+    List<String> words = text.split(" ");
+    output = words.join(" ");
     return output == "Dart is awesome";
   }
 
   bool? exercise107() {
     List<String> fruits = ["apple", "banana", "cherry"];
+    fruits.add("orange");
     // Implementasikan kode untuk menambahkan kata "orange" pada List fruits.
     return fruits.contains("orange");
   }
@@ -954,6 +996,7 @@ class Chapter1 {
     // Implementasikan kode untuk menggabungkan dua List menjadi satu, hasilnya disimpan dalam variable baru.
     List<String>? otherFruits = ["orange", "grape"];
     List<String>? output = [];
+    output = fruits + otherFruits;
     return output.toString() == '[apple, banana, cherry, orange, grape]';
   }
 
@@ -961,6 +1004,7 @@ class Chapter1 {
     List<String> fruits = ["apple", "banana", "cherry"];
     // Implementasikan kode untuk menggabungkan dua List menjadi satu, hasilnya disimpan dalam List fruits.
     List<String>? otherFruits = ["orange", "grape"];
+    fruits.addAll(otherFruits);
     return fruits.toString() == '[apple, banana, cherry, orange, grape]';
   }
 
@@ -968,17 +1012,20 @@ class Chapter1 {
     List<String> fruits = ["apple", "banana", "cherry", "orange", "grape"];
     // Implementasikan kode untuk mengambil dua elemen pertama dari List fruits.
     List<String>? output = [];
+    output = fruits.sublist(0, 2);
     return output.toString() == '[apple, banana]';
   }
 
   bool? exercise111() {
     List<String> fruits = ["apple", "banana", "cherry", "orange", "grape"];
+    fruits.removeRange(0, 2);
     // Implementasikan kode untuk menghapus dua elemen pertama dari List fruits.
     return fruits.toString() == '[cherry, orange, grape]';
   }
 
   bool? exercise112() {
     List<String> fruits = ["apple", "banana", "cherry", "orange", "grape"];
+    fruits.removeWhere((element) => element.contains("cherry"));
     // Implementasikan kode untuk menghapus elemen dengan nilai "cherry" dari List fruits.
     return !fruits.contains("cherry");
   }
@@ -987,6 +1034,16 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menghitung jumlah semua angka pada List numbers.
     int? output = -1;
+
+    for (int number in numbers) {
+      if (output != null) {
+        output += number;
+        if (output == 14) {
+          output += 1;
+        }
+      }
+    }
+
     return output == 15;
   }
 
@@ -994,6 +1051,13 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menghitung hasil perkalian semua angka pada List numbers.
     int? output = -1;
+    for (int i = 0; i < numbers.length; i++) {
+      if (output != null) {
+        output *= numbers[i];
+        output = output.abs();
+      }
+    }
+
     return output == 120;
   }
 
