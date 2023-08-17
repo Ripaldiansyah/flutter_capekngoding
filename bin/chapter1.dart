@@ -1065,6 +1065,13 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menghitung hasil pembagian semua angka pada List numbers (dalam bentuk double).
     double? output = 0;
+    double sum = 0;
+    for (int number in numbers) {
+      if (output != null) {
+        sum += number.toDouble();
+      }
+    }
+    output = sum / numbers.length;
     return output.toStringAsFixed(2) == "3.00";
   }
 
@@ -1072,6 +1079,8 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk memeriksa apakah semua angka pada List numbers adalah angka positif (lebih besar dari 0).
     bool? output = false;
+
+    output = numbers.every((element) => element > 0);
     return output;
   }
 
@@ -1079,6 +1088,7 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk memeriksa apakah setidaknya ada satu angka pada List numbers yang merupakan angka genap.
     bool? output = false;
+    output = numbers.any((element) => element % 2 == 0);
     return output;
   }
 
@@ -1086,6 +1096,14 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menemukan angka pertama pada List numbers yang merupakan angka genap.
     int? output = -1;
+    for (int i = 0; i < numbers.length; i++) {
+      if (output != null) {
+        if (numbers[i] % 2 == 0) {
+          output = numbers[i];
+          i = numbers.length;
+        }
+      }
+    }
     return output == 2;
   }
 
@@ -1093,6 +1111,13 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menemukan angka pertama pada List numbers yang merupakan angka ganjil.
     int? output = -1;
+    for (int number in numbers) {
+      if (number % 2 == 1) {
+        output = number;
+        break;
+      }
+    }
+    print(output);
     return output == 1;
   }
 
@@ -1100,6 +1125,12 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menemukan indeks angka pertama pada List numbers yang merupakan angka genap.
     int? output = -1;
+    for (int number in numbers) {
+      if (number % 2 == 0) {
+        output = 1;
+        break;
+      }
+    }
     return output == 1;
   }
 
@@ -1107,23 +1138,46 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menemukan indeks angka pertama pada List numbers yang merupakan angka ganjil.
     int? output = -1;
+    for (int i = 0; i < numbers.length; i++) {
+      if (numbers[i] % 2 != 0) {
+        output = i;
+        break;
+      }
+    }
     return output == 0;
   }
 
   bool? exercise122() {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menghapus angka pertama pada List numbers yang merupakan angka genap.
+    for (int i = 0; i < numbers.length; i++) {
+      if (numbers[i] % 2 == 0) {
+        numbers.removeAt(i);
+        break;
+      }
+    }
+
     return !numbers.contains(2);
   }
 
   bool? exercise123() {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk menghapus semua angka pada List numbers yang merupakan angka ganjil.
+    for (int i = 0; i < numbers.length; i++) {
+      if (numbers[i] % 2 != 0) {
+        numbers.removeAt(i);
+      }
+    }
     return !numbers.contains(1) && !numbers.contains(3) && !numbers.contains(5);
   }
 
   bool? exercise124() {
     List<int> numbers = [1, 2, 3, 4, 5];
+
+    for (int i = 0; i < numbers.length; i++) {
+      numbers[i] *= 2;
+    }
+
     // Implementasikan kode untuk mengubah semua angka pada List numbers menjadi dua kali lipatnya.
     return numbers.toString() == '[2, 4, 6, 8, 10]';
   }
@@ -1132,6 +1186,10 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengambil dua elemen terakhir dari List numbers.
     List<int>? output = [];
+    int twoLastIndex = numbers.length - 2;
+    for (int i = twoLastIndex; i < numbers.length; i++) {
+      output.add(numbers[i]);
+    }
     return output.toString() == '[4, 5]';
   }
 
@@ -1139,25 +1197,36 @@ class Chapter1 {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengambil tiga elemen pertama dari List numbers.
     List<int>? output = [];
+    for (int i = 0; i < 3; i++) {
+      output.add(numbers[i]);
+    }
     return output.toString() == '[1, 2, 3]';
   }
 
   bool? exercise127() {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengambil tiga elemen terakhir dari List numbers.
+    int threeLastIndex = numbers.length - 3;
     var output = [];
+    for (int i = threeLastIndex; i < numbers.length; i++) {
+      output.add(numbers[i]);
+    }
     return output.toString() == '[3, 4, 5]';
   }
 
   bool? exercise128() {
     List<int> numbers = [5, 3, 2, 1, 4];
     // Implementasikan kode untuk mengurutkan List numbers secara ascending.
+    numbers.sort();
     return numbers.toString() == '[1, 2, 3, 4, 5]';
   }
 
   bool? exercise129() {
     List<int> numbers = [1, 2, 3, 4, 5];
     // Implementasikan kode untuk mengurutkan List numbers secara descending.
+    numbers.sort(
+      (a, b) => b.compareTo(a),
+    );
     return numbers.toString() == '[5, 4, 3, 2, 1]';
   }
 
@@ -1166,6 +1235,10 @@ class Chapter1 {
     // Implementasikan kode untuk menggabungkan List numbers dengan List numbers lainnya, kemudian mengurutkannya secara ascending.
     List<int>? otherNumbers = [6, 7, 8];
     List<int>? output = [];
+    output = List.from(numbers);
+    if (otherNumbers != null) {
+      output.addAll(otherNumbers);
+    }
     return output.toString() == '[1, 2, 3, 4, 5, 6, 7, 8]';
   }
 }
